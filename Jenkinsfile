@@ -4,15 +4,15 @@ pipeline {
 
     stages {
 
-        stage('Install Dependencies') {
-            steps {
-                bat 'pip install -r requirements.txt'
-            }
-        }
-
         stage('Run Tests') {
             steps {
                 bat 'python -m pytest'
+            }
+        }
+
+        stage('Compare Models') {
+            steps {
+                bat 'python model_registry/compare_models.py'
             }
         }
 
