@@ -4,11 +4,9 @@ pipeline {
 
     stages {
 
-        stage('Debug') {
+        stage('Run Tests') {
             steps {
-                bat 'where python'
-                bat 'python --version'
-                bat 'python -m pip list'
+                bat 'python -m pytest'
             }
         }
 
