@@ -21,6 +21,11 @@ pipeline {
                 bat 'docker compose build'
             }
         }
+        stage('Deploy To Kubernetes') {
+            steps {
+                bat 'kubectl apply -f k8s/'
+            }
+        }
 
     }
 }
