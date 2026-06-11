@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import pandas as pd
+import os
 
 app = FastAPI()
 
@@ -13,9 +14,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-import os
-import joblib
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MODEL_PATH = os.path.join(
@@ -25,9 +23,17 @@ MODEL_PATH = os.path.join(
 )
 
 model = joblib.load(MODEL_PATH)
+
+APP_VERSION = "v1"
+
+
 @app.get("/")
 def home():
-    return {"message": "Temperature Predictor API"}
+    return {
+        "message": "Temperature Predictor API",
+        "version": APP_VERSION
+    }
+
 
 @app.post("/predict")
 def predict(data: dict):
@@ -37,5 +43,6 @@ def predict(data: dict):
     prediction = model.predict(input_df)
 
     return {
-        "predicted_temperature": float(prediction[0])
+        "predicted_temperature": float(prediction[0]),
+        "version": APP_VERSION
     }
