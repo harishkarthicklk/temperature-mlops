@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 
-model = joblib.load("pkl_file/model_v1.pkl")
+model = joblib.load("pkl_file/current_model.pkl")
 
 sample = pd.DataFrame({
     "humidity": [70],
