@@ -22,16 +22,24 @@ MODEL_PATH = os.path.join(
     "current_model.pkl"
 )
 
-model = joblib.load(MODEL_PATH)
-
 APP_VERSION = "v2"
+
+model = joblib.load(MODEL_PATH)
 
 @app.get("/health")
 def health():
-
     return {
         "status": "healthy",
-        "model": "current_model"
+        "version": APP_VERSION,
+        "model_path": MODEL_PATH
+    }
+
+@app.get("/model-info")
+def model_info():
+    return {
+        "version": APP_VERSION,
+        "model_file": "current_model.pkl",
+        "model_type": type(model).__name__
     }
 
 @app.get("/")
@@ -40,7 +48,6 @@ def home():
         "message": "Temperature Predictor API",
         "version": APP_VERSION
     }
-
 
 @app.post("/predict")
 def predict(data: dict):
