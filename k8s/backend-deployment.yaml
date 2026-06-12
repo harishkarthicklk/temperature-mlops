@@ -19,8 +19,12 @@ spec:
     spec:
       containers:
       - name: backend
-        image: mlops-backend:v2
+        image: mlops-backend:v3
         imagePullPolicy: Never
+
+        env:
+        - name: MODEL_VERSION
+          value: "v3"
 
         ports:
         - containerPort: 8000

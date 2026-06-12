@@ -22,7 +22,7 @@ MODEL_PATH = os.path.join(
     "current_model.pkl"
 )
 
-APP_VERSION = "v2"
+APP_VERSION = os.getenv("MODEL_VERSION", "v1")
 
 model = joblib.load(MODEL_PATH)
 
