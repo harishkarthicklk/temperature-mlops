@@ -24,7 +24,7 @@ MODEL_PATH = os.path.join(
 
 model = joblib.load(MODEL_PATH)
 
-APP_VERSION = "v2"
+APP_VERSION = "v1"
 
 
 @app.get("/")
