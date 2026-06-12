@@ -26,6 +26,13 @@ model = joblib.load(MODEL_PATH)
 
 APP_VERSION = "v2"
 
+@app.get("/health")
+def health():
+
+    return {
+        "status": "healthy",
+        "model": "current_model"
+    }
 
 @app.get("/")
 def home():
