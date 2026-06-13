@@ -1,15 +1,7 @@
 import joblib
-import pandas as pd
 
 model = joblib.load("pkl_file/current_model.pkl")
 
-sample = pd.DataFrame({
-    "humidity": [70],
-    "pressure": [1012],
-    "wind_speed": [10],
-    "cloud_cover": [40]
-})
-
-prediction = model.predict(sample)
-
-print("Predicted Temperature:", prediction[0])
+print("Model Type:", type(model).__name__)
+print("Estimators:", getattr(model, "n_estimators", "N/A"))
+print("Max Depth:", getattr(model, "max_depth", "N/A"))

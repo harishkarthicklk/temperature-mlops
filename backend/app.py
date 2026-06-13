@@ -39,8 +39,9 @@ def health():
 def model_info():
     return {
         "version": APP_VERSION,
-        "model_file": "current_model.pkl",
-        "model_type": type(model).__name__
+        "model_type": type(model).__name__,
+        "n_estimators": getattr(model, "n_estimators", None),
+        "max_depth": getattr(model, "max_depth", None)
     }
 
 @app.get("/")
