@@ -5,6 +5,7 @@ import pandas as pd
 import os
 
 app = FastAPI()
+raise Exception("Simulated Failure")
 
 app.add_middleware(
     CORSMiddleware,
