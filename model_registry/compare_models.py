@@ -8,7 +8,7 @@ from sklearn.metrics import r2_score
 # CONFIGURATION
 # -------------------------
 
-TEST_DATASET = "dataset/weather_v2.csv"
+TEST_DATASET = "dataset/weather_v3.csv"
 
 CURRENT_MODEL = "pkl_file/current_model.pkl"
 
